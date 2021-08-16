@@ -1,0 +1,113 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Intelligent Album Manager</title>
+	
+	<link href="{{ url_for('static', filename='/css/style.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='/css/main.css') }}" rel="stylesheet">
+	
+	<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+	
+	
+</head>
+
+<body>
+	<header id="main-header">
+		<div class="container">
+			<h1>Intelligent_album </h1>
+		</div>
+	</header>
+	
+    <div class="parallax">
+	<section id="showcase">
+		<div class="container">
+			<h1 style=font-size:77px><br><br>Using AWS Services to make things Smarter</h1><h2 style=font-size:57px>Leveraging the power of<br>AWS Rekognition<br>to increase efficiency &<br>ease of sorting images<br></h2>
+    		<center> <a href="#section2" class="upload-label" style="color:white;font-size:25px ;text-decoration:none">Detect Face</a></center><br>
+		</div>
+	</section>
+    </div>
+    
+    <div class="background" id="section2" style="height: 543px;">
+    
+	<div class="container">
+		<section id="main">
+    	<div class="justify">
+			<h1><b>Introduction</h1>
+			<p><h3 style=font-size:19px> Many people make photo albums of their family or close friends or relatives 
+			but have a hard time finding photos of particular people which they want or to sort them according to that.
+			Here, our application comes into work, where you can simply choose some photos as a collection of all the 
+			different faces available in the album and sort all the photos at once by the face detected in each photo. 
+			The application is purely based on AWS Rekognition client (and it’s services) and AWS S3 (Storage).</p>
+			<p>The basic working of the application is to take a source image and compare it with all the faces in 
+			the collection to find a match, as soon as we get a match, the program will put that particular photo in
+			the folder of the person whose face was detected. It’ll run in loop until we get all our photos sorted, 
+			all we need to do is just upload the photos and ask our Intelligent Album Manger to do it’s magic.</p><br><br><left> <div class="upload-label">
+                <left><a href="#" style="color:white; text-decoration:none">Top</a></left>
+        </div></left><br></h3></p>
+			
+        </div>
+        
+		</section>
+		
+		<aside id="sidebar">
+		<div class="col-sm-6">
+				<div>
+					<h4 style=font-size:19px>Upload your image</h4>
+			<form action = "http://localhost:5000/predict" id="upload-file" method="post" enctype="multipart/form-data">
+				<label for="imageUpload" class="upload-label">
+					Select
+				</label>
+				<input type="file" name="image" id="imageUpload" accept=".png, .jpg">
+			</form>
+			
+
+			<div class="image-section" style="display:none;">
+			
+				<div class="img-preview">
+					<div id="imagePreview"> </div>
+				</div>
+				
+				<div>
+					<button type="button" class="myButton" id="btn-predict">Predict</button>
+				</div>
+				
+			</div>
+
+			<div class="loader" style="display:none;"></div>
+
+			<h3>
+				<span id="result"> </span>
+			</h3>
+		</aside>
+	</div>
+	
+    </div>
+    
+<script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+</script>
+
+	<footer id="main-footer">
+		<p>Copyright &copy; 2020 RSS Pvt Ltd</p>
+		<script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>
+	</footer>
+</body>
+</html>
